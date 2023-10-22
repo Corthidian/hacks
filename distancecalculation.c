@@ -16,6 +16,23 @@ double computeDistance (double lat1,double lon1,double lat2,double lon2)
     
     return EARTH_RADIUS * (acos sin(lat1) *sin(lat2) + cos(lat2) * cos(lat1) * cos(dlon));
 }
+ int main ()
+ {
+    double lat1,lat2,lon1,lon2;
+    printf("Enter the latittude of origin: ");
+    scanf("%lf",&lat1);
+    printf("Enter the longitude of origin: ");
+    scanf("%lf",&lon1);
+    printf("Enter the latittude of destination: ");
+    scanf("%lf",&lat2);
+    printf("Enter the latittude of destination: ");
+    scanf("%lf",&lon2);
+    double distance = computeDistance(lat1,lat2,lon1,lon2);
+    
+
+
+ }
+ 
 
 
 
