@@ -19,4 +19,24 @@ int main(int argc, char *argv[]) {
         printf("ERROR: Invalid input values.\n");
         return 1;
     }
-    
+    double monthly_rate_of_return = (pow(1 + annual_rate_of_return, 1.0 / 12) - 1);
+    double monthly_rate_of_inflation = (pow(1 + annual_rate_of_inflation, 1.0 / 12) - 1);
+    double total_interest_earned = 0.0;
+
+    printf("Month    Interest     Balance\n");
+    for (int month = 1; month <= years_until_retirement * 12; month++) {
+        double interest_earned = initial_balance * monthly_rate_of_return;
+        double inflation_adjusted_interest = interest_earned / (1 + monthly_rate_of_inflation);
+        double new_balance = initial_balance + inflation_adjusted_interest + monthly_contribution;
+
+        printf("%5d $%9.2lf $%10.2lf\n", month, inflation_adjusted_interest, new_balance);
+
+        total_interest_earned += inflation_adjusted_interest;
+        initial_balance = new_balance;
+    }
+
+    printf("Total Interest Earned: $%9.2lf\n", total_interest_earned);
+    printf("Total Nest Egg: $%9.2lf\n", initial_balance);
+
+    return 0;
+}
